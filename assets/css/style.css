@@ -1,0 +1,37 @@
+* {
+    background-color: red;
+}
+
+body {
+    margin: 15px;
+    font-family: 'Source Code Pro', monospace;
+}
+
+h1 {
+    width: 500px;
+    padding: 20px;
+    font-size: 24px;
+    background-color: black;
+    color: gray;
+}
+
+#instructions {
+    width: 500px;
+    padding: 20px;
+    background-color: gray;
+    color: black;
+}
+
+p {
+    background-color: gray;
+}
+
+#score, #winsLosses {
+    width: 395px;
+}
+
+#randomNumber {
+    width: 395px;
+    font-size: 50px;
+    color: gray;
+}
