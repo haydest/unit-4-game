@@ -28,10 +28,10 @@ p {
 
 #score, #winsLosses {
     width: 395px;
+    background-color: gray;
 }
 
 #randomNumber {
     width: 395px;
     font-size: 50px;
-    color: gray;
 }
