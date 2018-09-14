@@ -1,56 +1,86 @@
+ 
+ var score = 0;
+ var wins = 0;
+ var losses = 0;
+ var chad;
+ var deryck;
+ var jesse;
+ var evan;
+ 
 
 
-$(document).ready(function() {
-  //var vals = []
-  var score = 0
-    //for (var i = 0; i < vals.length; i++) {
-        //score += vals[i]
-    //}
-  var chadRandom = Math.floor(Math.random() * 12) + 1;
-  var deryckRandom = Math.floor(Math.random() * 12) + 1;
-  var jesseRandom = Math.floor(Math.random() * 12) + 1;
-  var evanRandom = Math.floor(Math.random() * 12) + 1;
-
-  function reset() {    
+function reset() {   
+   score = 0; 
+   var chadRandom = Math.floor(Math.random() * 12) + 1;
+   var deryckRandom = Math.floor(Math.random() * 12) + 1;
+   var jesseRandom = Math.floor(Math.random() * 12) + 1;
+   var evanRandom = Math.floor(Math.random() * 12) + 1;
    var randomNumber = Math.floor(Math.random() * 120) + 19;
-   $("#randomNumber").append(randomNumber);
+   $("#randomNumber").text(randomNumber);
    console.log(randomNumber);
-   $("#score").append("your total score is: " + score);
-   $("#chad").val(chadRandom);
-     console.log(chadRandom);
-   $("#deryck").val(deryckRandom);
-     console.log(deryckRandom);
-   $("#jesse").val(jesseRandom);
-     console.log(jesseRandom);
-   $("#evan").val(evanRandom);
-     console.log(evanRandom);
+   $("#score").text("your total score is: " + score);
+   chad = chadRandom;
+   $("#chad").val(chad);
+   deryck = deryckRandom;
+   $("#deryck").val(deryck);
+   jesse = jesseRandom;
+   $("#jesse").val(jesse);
+   evan = evanRandom;
+   $("#evan").val(evan);
   };
+
+function evaluateScore() {
+   if (score > randomNumber) {
+       losses++;
+       $("#losses").text("losses: " + losses);
+       reset();
+   }
+ 
+   else if (score === randomNumber) {
+       wins++;
+       $("#wins").text("wins: " + wins);
+       reset();
+       
+   }
+  //  else if (score < randomNumber) {
+  //      console.log(score);
+  //  }
+};
+
+$(document).ready(function() {    
+ 
   reset();
 
   $("#chad").on("click", function() {
-      score = score += $("#chad");
-      $("#score").append(score);
+    score += chad;
+    $("#score").text("your total score is: " + score);
     console.log(score);
+    // evaluateScore();
   });
 
   $("#deryck").on("click", function() {
-    $("#score").append(deryckRandom);
-    score = score += deryckRandom;
+    score += deryck;
+    $("#score").text("your total score is: " + score);
     console.log(score);
+    // evaluateScore();
   });
 
   $("#jesse").on("click", function() {
-    $("#score").append(jesseRandom);
-    score = score += jesseRandom;
+    score += jesse;
+    $("#score").text("your total score is: " + score);
     console.log(score);
+    // evaluateScore();
   });
 
   $("#evan").on("click", function() {
-    $("#score").append(evanRandom);
-    score = score += evanRandom;
+    score += evan;
+    $("#score").text("your total score is: " + score);
     console.log(score);
+    // evaluateScore();
   });
-
+  evaluateScore();
+  
+  
   
 
 }) 
