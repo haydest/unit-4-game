@@ -1,55 +1,55 @@
  
- var score = 0;
- var wins = 0;
- var losses = 0;
- var chad;
- var deryck;
- var jesse;
- var evan;
- 
 
 
-function reset() {   
-   score = 0; 
-   var chadRandom = Math.floor(Math.random() * 12) + 1;
-   var deryckRandom = Math.floor(Math.random() * 12) + 1;
-   var jesseRandom = Math.floor(Math.random() * 12) + 1;
-   var evanRandom = Math.floor(Math.random() * 12) + 1;
-   var randomNumber = Math.floor(Math.random() * 120) + 19;
-   $("#randomNumber").text(randomNumber);
-   console.log(randomNumber);
-   $("#score").text("your total score is: " + score);
-   chad = chadRandom;
-   $("#chad").val(chad);
-   deryck = deryckRandom;
-   $("#deryck").val(deryck);
-   jesse = jesseRandom;
-   $("#jesse").val(jesse);
-   evan = evanRandom;
-   $("#evan").val(evan);
+$(document).ready(function() {  
+  
+  var score = 0;
+  var wins = 0;
+  var losses = 0;
+  var chad;
+  var deryck;
+  var jesse;
+  var evan;
+  var randomNumber = function(min, max) {
+   return Math.floor(Math.random() * (max - min +1)) + min;
   };
-
-function evaluateScore() {
-   if (score > randomNumber) {
-       losses++;
-       $("#losses").text("losses: " + losses);
-       reset();
-   }
+  
  
-   else if (score === randomNumber) {
-       wins++;
-       $("#wins").text("wins: " + wins);
-       reset();
-       
-   }
-  //  else if (score < randomNumber) {
-  //      console.log(score);
-  //  }
-};
-
-$(document).ready(function() {    
  
-  reset();
+ function reset() {   
+    score = 0; 
+    var chadRandom = Math.floor(Math.random() * 12) + 1;
+    var deryckRandom = Math.floor(Math.random() * 12) + 1;
+    var jesseRandom = Math.floor(Math.random() * 12) + 1;
+    var evanRandom = Math.floor(Math.random() * 12) + 1;
+    targetScore = randomNumber(19, 120);
+    $("#randomNumber").text(targetScore);
+    console.log(targetScore);
+    $("#score").text("your total score is: " + score);
+    chad = chadRandom;
+    $("#chad").val(chad);
+    deryck = deryckRandom;
+    $("#deryck").val(deryck);
+    jesse = jesseRandom;
+    $("#jesse").val(jesse);
+    evan = evanRandom;
+    $("#evan").val(evan);
+   };
+ 
+ function evaluateScore() {
+    if (score > targetScore) {
+        losses++;
+        $("#losses").text("losses: " + losses);
+        reset();
+    }
+  
+    else if (score === targetScore) {
+        wins++;
+        $("#wins").text("wins: " + wins);
+        reset();
+        
+    }
+ };
 
   $("#chad").on("click", function() {
     score += chad;
@@ -80,7 +80,7 @@ $(document).ready(function() {
   });
   evaluateScore();
   
-  
+  reset();
   
 
 }) 
